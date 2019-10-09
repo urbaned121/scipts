@@ -36,3 +36,5 @@ sudo dscl . -append /Groups/admin GroupMembership $2
 sudo scutil --set HostName espeo-$2
 sudo scutil --set ComputerName espeo-$2
 sudo scutil --set LocalHostName espeo-$2 
+sudo fdesetup enable #turns on FileVault 
+ioreg -l | grep IOPlatformSerialNumber
