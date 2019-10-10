@@ -7,7 +7,7 @@ then
     exit 0
 fi  
 
-instalacja HomeBrew oraz cask
+#instalacja HomeBrew oraz cask
 sudo yes "" |  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" 
 sleep 2
 DOCTOR=$(brew doctor)
@@ -16,7 +16,7 @@ echo -e "\e[42m++++++ Instalacja cask ++++++"
 sleep 1
 brew install cask
 sleep 1
-narzedzia
+#narzedzia
 brew install wget
 brew install htop
 brew cask install google-chrome
@@ -36,5 +36,5 @@ sudo dscl . -append /Groups/admin GroupMembership $2
 sudo scutil --set HostName espeo-$2
 sudo scutil --set ComputerName espeo-$2
 sudo scutil --set LocalHostName espeo-$2 
-sudo fdesetup enable #turns on FileVault 
+sudo fdesetup enable #turns on FileVault
 ioreg -l | grep IOPlatformSerialNumber
