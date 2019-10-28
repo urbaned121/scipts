@@ -25,6 +25,7 @@ brew cask install google-chrome
 brew cask install visual-studio-code
 brew cask install slack
 brew cask install skype
+brew cask install docker
 
 if  [[ $UserName == $(dscl . -list /Users UniqueID | awk '{print $1}' | grep -w $UserName) ]]; 
 then
@@ -47,6 +48,8 @@ sudo scutil --set HostName espeo-"$UserName"
 sudo scutil --set ComputerName espeo-"$UserName"
 sudo scutil --set LocalHostName espeo-"$UserName" 
 sudo createhomedir -u "$UserName" -c
-sudo fdesetup enable #turns on FileVault
 ioreg -l | grep IOPlatformSerialNumber
 echo "New user $(dscl . -list /Users UniqueID | awk '{print $1}' | grep -w $UserName) has been created with unique ID $(dscl . -list /Users UniqueID | grep -w $UserName | awk '{print $2}')"
+
+sudo fdesetup enable #turns on FileVault
+sudo fdesetup add -usertoadd "$UserName"
