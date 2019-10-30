@@ -51,7 +51,7 @@ sudo createhomedir -u "$UserName" -c
 ioreg -l | grep IOPlatformSerialNumber
 echo "New user $(dscl . -list /Users UniqueID | awk '{print $1}' | grep -w $UserName) has been created with unique ID $(dscl . -list /Users UniqueID | grep -w $UserName | awk '{print $2}')"
 
-#enabling FileVault and add $UserName to list of  users available to unlock encrypted disk
+#enabling FileVault and add $UserName to list of users available to unlock encrypted disk
 sudo fdesetup enable 
 sudo fdesetup add -usertoadd "$UserName"
 printf "Users avaiable to unlock disk: %s\n$(sudo fdesetup list)'" | cut -d',' -f1 
