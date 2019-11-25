@@ -40,13 +40,14 @@ sudo dscl . -create /Users/"$UserName"
 sudo dscl . -create /Users/"$UserName" UserShell /bin/bash
 sudo dscl . -create /Users/"$UserName" RealName "$RealName"
 sudo dscl . -create /Users/"$UserName" UniqueID $NextID
-sudo dscl . -create /Users/"$UserName" PrimaryGroupID 20
+sudo dscl . -create /Users/"$UserName" PrimaryGroupID 80
 sudo dscl . -create /Users/"$UserName" NFSHomeDirectory /Users/"$UserName"
 sudo dscl . -passwd /Users/"$UserName" Test123!
 sudo dscl . -append /Groups/admin GroupMembership "$UserName"
 sudo scutil --set HostName espeo-"$UserName"
 sudo scutil --set ComputerName espeo-"$UserName"
 sudo scutil --set LocalHostName espeo-"$UserName" 
+echo "Creating user directory, enter admin password:"
 sudo createhomedir -u "$UserName" -c
 ioreg -l | grep IOPlatformSerialNumber
 echo "New user $(dscl . -list /Users UniqueID | awk '{print $1}' | grep -w $UserName) has been created with unique ID $(dscl . -list /Users UniqueID | grep -w $UserName | awk '{print $2}')"
@@ -55,3 +56,4 @@ echo "New user $(dscl . -list /Users UniqueID | awk '{print $1}' | grep -w $User
 sudo fdesetup enable 
 sudo fdesetup add -usertoadd "$UserName"
 printf "Users avaiable to unlock disk: %s\n$(sudo fdesetup list)'" | cut -d',' -f1 
+printf "Please reboot your computer"
