@@ -56,4 +56,4 @@ echo "New user $(dscl . -list /Users UniqueID | awk '{print $1}' | grep -w $User
 sudo fdesetup enable 
 sudo fdesetup add -usertoadd "$UserName"
 printf "Users avaiable to unlock disk: %s\n$(sudo fdesetup list)'" | cut -d',' -f1 
-printf "Please reboot your computer"
+printf "Please reboot your computer\n"
