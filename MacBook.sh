@@ -49,7 +49,7 @@ sudo dscl . -append /Groups/admin GroupMembership "$UserName"
 sudo scutil --set HostName espeo-"$UserName"
 sudo scutil --set ComputerName espeo-"$UserName"
 sudo scutil --set LocalHostName espeo-"$UserName" 
-printf "Creating new user directory, enter admin password:"
+printf "Creating new user directory, enter admin password:\n"
 sudo createhomedir -u "$UserName" -c
 ioreg -l | grep IOPlatformSerialNumber
 echo "New user $(dscl . -list /Users UniqueID | awk '{print $1}' | grep -w $UserName) has been created with unique ID $(dscl . -list /Users UniqueID | grep -w $UserName | awk '{print $2}')"
