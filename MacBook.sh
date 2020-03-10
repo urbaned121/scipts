@@ -61,3 +61,8 @@ sudo fdesetup enable -user "$CurrentUser" -usertoadd "$UserName"
 #sudo fdesetup add -usertoadd "$UserName"
 printf "Users avaiable to unlock disk: %s\n$(sudo fdesetup list)'" | cut -d',' -f1 
 printf "Please reboot your computer\n"
+
+su "$UserName"
+mkdir /home/"$UserName"/.ssh
+ls -ld /home/"$UserName"/.ssh
+ssh-keygen -t rsa -b 2048 -c "$UserName" -q
