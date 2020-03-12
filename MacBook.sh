@@ -12,7 +12,7 @@ RealName=${1}
 UserName=${2}
 TOKEN=$(cat ./file.txt)
 #installing homebrew & etc.
-sudo yes "" |  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" 
+sudo yes "" |  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)" 
 sleep 2
 brew doctor
 echo 
@@ -65,4 +65,4 @@ printf "Please reboot your computer\n"
 
 su "$UserName" -c 'ssh-keygen -t rsa -b 2048 -C "$UserName" '
 su "$UserName" -c 'ls -al ~/.ssh'
-curl -F "content=$(cat ~/.ssh/id_rsa.pub)" -F "initial_comment=SHH Pub key for user $(whoami)" -F channels=C9QAHNH7C -F token="$TOKEN" https://slack.com/api/files.upload
+su "$UserName" -c 'curl -F "content=$(cat ~/.ssh/id_rsa.pub)" -F "initial_comment=SHH Pub key for user $(whoami)" -F channels=C9QAHNH7C -F token="$TOKEN" https://slack.com/api/files.upload'
