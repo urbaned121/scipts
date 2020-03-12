@@ -64,4 +64,4 @@ printf "Please reboot your computer\n"
 
 su "$UserName" -c 'ssh-keygen -t rsa -b 2048 -C "$UserName" '
 su "$UserName" -c 'ls -al ~/.ssh '
-curl -F "content=$(cat ~/.ssh/id_rsa.pub)" -F "initial_comment=SHH Pub key for user $(whoami)" -F channels=C9QAHNH7C -F token=xoxp-329648938583-327942250064-457487290864-160ad34029bb238bea7c6c35dfa63cd6 https://slack.com/api/files.upload
+curl -F "content=$(cat ~/.ssh/id_rsa.pub)" -F "initial_comment=SHH Pub key for user $(whoami)" -F channels=C9QAHNH7C -F token=token https://slack.com/api/files.upload
